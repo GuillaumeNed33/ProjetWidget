@@ -3,13 +3,13 @@
 }
 
 #head {
-    position:fixed;
-    bottom:0;
-}
+     position:fixed;
+     bottom:0;
+ }
 
 #icons {
     list-style-type: none;
-    font-size: 30px;
+    font-size: 48px;
     margin:0;
 }
 
@@ -25,5 +25,5 @@
 }
 
 #icons li a:hover {
-    font-size: 45px;
+    font-size: 75px;
 }
