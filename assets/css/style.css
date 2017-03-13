@@ -1,3 +1,10 @@
 #icons {
-    list-style: none;
+    list-style-type: none;
+    font-size: 50px;
 }
+#icons li {
+    margin: 0 10px 0 10px;
+    display: inline
+}
+
+#icons li a { text-decoration: none }
