@@ -1,3 +1,7 @@
+.navbar {
+    border-radius: 0;
+}
+
 #icons {
     list-style-type: none;
     font-size: 50px;
