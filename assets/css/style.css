@@ -1,10 +1,25 @@
-#icons {
-    list-style-type: none;
-    font-size: 50px;
-}
-#icons li {
-    margin: 0 10px 0 10px;
-    display: inline
+#head {
+    position:fixed;
+    bottom:0;
 }
 
-#icons li a { text-decoration: none }
+#icons {
+    list-style-type: none;
+    font-size: 30px;
+    margin:0;
+}
+
+#icons li {
+    margin: 0 0.2em 0 0.2em;
+    display: inline;
+}
+
+#icons li a {
+    text-decoration: none;
+    -webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+    transition: all 0.5s;
+}
+
+#icons li a:hover {
+    font-size: 45px;
+}
