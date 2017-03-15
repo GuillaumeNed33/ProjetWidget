@@ -1,12 +1,66 @@
-.navbar-xs .navbar-primary .navbar { border-radius:0; padding-left:5px; padding-right:5px; min-height:28px; height: 28px; }
-.navbar-xs .navbar-primary .navbar .navbar-brand{ padding: 0px 12px;font-size: 12px;line-height: 28px; }
-.navbar-xs .navbar-primary .navbar .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 28px; }
-.text-navbar-brand {margin-left: 5px; }
+body {
+    background: url("../img/background.jpg") no-repeat center fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+}
+.navbar {
+    background-color: #c6c6c6;
+    border: solid 0px;
+}
 
+.navbar-inverse .navbar-header>a>i ,
+#finder,
+.navbar-inverse .navbar-nav>li>a
+{
+    color: #0f0f0f;
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        border-radius: 0;
+        max-height: 30px;
+        min-height: 30px;
+        height: 30px;
+        font-size: 12px;
+        line-height: 28px;
+        box-shadow: 0px 2px 5px 0px #2E2E2E;
+    }
+    .text-navbar-brand {margin-left: 5px; }
+    .navbar-brand {line-height: 0px; font-size: 16px; padding: 3px 15px;}
+    .navbar .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 28px; padding-top: 0;margin-top: 0;}
+    .navbar .fa-apple {
+        font-size: 22px;
+    }
+    .navbar #finder {
+        font-size: 18px;
+        padding-top: 3px;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        text-align: center;;
+        position:fixed;
+        top:0;
+        left:0;
+        max-width: 50px;
+        height: 100%;
+        box-shadow: 3px 0px 5px 0px #2E2E2E;
+    }
+    #date {
+        text-align: center;
+        padding-left: -20px;
+        padding-right: 5px;
+        width: 40px;
+    }
+    .navbar .fa-apple {
+        font-size: 28px;
+    }
+}
 #head {
-     position:fixed;
-     bottom:0;
- }
+    position:fixed;
+    bottom:0;
+}
 
 #icons {
     list-style-type: none;

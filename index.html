@@ -14,30 +14,22 @@
     <script src="assets/js/script.js"></script>
 </head>
 <body>
-	<div class="navbar-xs">
-		<div class="navbar-primary">
-			<nav class="navbar navbar-inverse">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<a class="navbar-brand" href="index.html"><i class="fa fa-apple"></i><span class="text-navbar-brand">Finder</span></a>
-					</div>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav navbar-right">
-							<li><a class="fa fa-bluetooth-b" href="TD1/TD1.html"></a></li>
-							<li><a class="fa fa-wifi" href="TD1/TD1.html"></a></li>
-							<li><a class="fa fa-volume-up" href="TD2/TD2.html"></a></li>
-							<li><a class="fa fa-battery-three-quarters" href="TD4/TD4.html"></a></li>
-							<li><a id="date" href="TD3/TD3.html"></a></li>
-							<li><a class="fa fa-search" href="TD5/TD5.html"></a></li>
-							<li><a class="fa fa-bars" href="TD5/TD5.html"></a></li>
-						</ul>
-					</div><!-- /.navbar-collapse -->
-				</div><!-- /.container-fluid -->
-			</nav>
-		</div>
-	</div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><i class="fa fa-apple"></i><span id="finder" class="text-navbar-brand"></span></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="fa fa-bluetooth-b" onclick="openBluetoothMenu()" href="#"></a></li>
+            <li><a class="fa fa-wifi" onclick="openWifiMenu()" href="#"></a></li>
+            <li><a class="fa fa-volume-up" onclick="openVolumeMenu()" href="#"></a></li>
+            <li><a class="fa fa-battery-three-quarters" onclick="openBatteryhMenu()" href="#"></a></li>
+            <li><a id="date" onclick="openDateMenu()" href="#"></a></li>
+            <li><a class="fa fa-search" onclick="openSearchMenu()" href="#"></a></li>
+            <li><a class="fa fa-bars" onclick="openOptionsMenu()" href="#"></a></li>
+        </ul>
+    </div><!-- /.container-fluid -->
+</nav>
 
 <div class="container-fluid">
     <div class="row">
