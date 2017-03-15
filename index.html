@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/widget.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -30,23 +29,25 @@
         </ul>
     </div><!-- /.container-fluid -->
 </nav>
+<main class="container-fluid">
+    <div id="content" class="row">
 
-<div class="container-fluid">
+    </div>
     <div class="row">
-        <div id="head" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div id="docker" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <ul class=" text-center "id="icons">
-                <li><a class="fa fa-clock-o"></a></li>
-                <li><a class="fa fa-cloud"></a></li>
-                <li><a class="fa fa-picture-o"></a></li>
-                <li><a class="fa fa-twitter"></a></li>
-                <li><a class="fa fa-youtube-play"></a></li>
-                <li><a class="fa fa-map"></a></li>
-                <li><a class="fa fa-bicycle"></a></li>
-                <li><a class="fa fa-trash"></a></li>
+                <li><a class="fa fa-clock-o" onclick="openClockWidget()" style="color: black"></a></li>
+                <li><a class="fa fa-cloud" onclick="openMeteoWidget()" style="color: #ffffff"></a></li>
+                <li><a class="fa fa-picture-o" onclick="openPhotoWidget()" style="color: saddlebrown"></a></li>
+                <li><a class="fa fa-twitter" onclick="openTwitterWidget()" style="color: #31b0d5"></a></li>
+                <li><a class="fa fa-youtube-play" onclick="openYoutubeWidget()" style="color: red"></a></li>
+                <li><a class="fa fa-map" onclick="openMapWidget()" style="color: green"></a></li>
+                <li><a class="fa fa-bicycle" onclick="openSportWidget()" style="color: black"></a></li>
+                <li><a class="fa fa-trash" onclick="DeleteWidget()" style="color: #444"></a></li>
             </ul>
         </div>
     </div>
-</div>
+</main>
 
 </body>
 </html>

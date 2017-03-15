@@ -3,31 +3,34 @@ body {
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
 }
+/*** NAVBAR GENERAL ***/
 .navbar {
-    background-color: #c6c6c6;
-    border: solid 0px;
+    border: solid 0;
 }
-
+#finder {
+    font-weight: bold;
+}
 .navbar-inverse .navbar-header>a>i ,
 #finder,
 .navbar-inverse .navbar-nav>li>a
 {
     color: #0f0f0f;
 }
-
+/*** NAVBAR ECRAN GRAND ***/
 @media (min-width: 768px) {
     .navbar {
         border-radius: 0;
         max-height: 30px;
         min-height: 30px;
         height: 30px;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 28px;
-        box-shadow: 0px 2px 5px 0px #2E2E2E;
+        box-shadow: 0 4px 10px 0 #2E2E2E;
+        background-image:linear-gradient(#d5d5d5, #888);
     }
     .text-navbar-brand {margin-left: 5px; }
-    .navbar-brand {line-height: 0px; font-size: 16px; padding: 3px 15px;}
-    .navbar .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 28px; padding-top: 0;margin-top: 0;}
+    .navbar-brand {line-height: 0; font-size: 16px; padding: 3px 15px;}
+    .navbar .navbar-nav > li > a {  padding-top: 0; padding-bottom: 0; line-height: 28px;margin-top: 0;}
     .navbar .fa-apple {
         font-size: 22px;
     }
@@ -37,16 +40,59 @@ body {
     }
 }
 
+/*** NAVBAR ECRAN PETIT ***/
 @media (max-width: 767px) {
     .navbar {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
         text-align: center;;
-        position:fixed;
-        top:0;
-        left:0;
-        max-width: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        max-width: 30px;
         height: 100%;
         box-shadow: 3px 0px 5px 0px #2E2E2E;
+        background-image: linear-gradient(to right, #d5d5d5, #888);
+        font-size: 16px;
     }
+    .navbar .navbar-nav > li:first-child > a {
+        position : absolute;
+        top: 5px;
+        left: -5px;
+    }
+    .navbar .navbar-nav > li:nth-child(2) > a {
+        position : absolute;
+        top: 45px;
+        left: -10px;
+    }
+    .navbar .navbar-nav > li:nth-child(3) > a {
+        position : absolute;
+        top: 85px;
+        left: -7px;
+    }
+    .navbar .navbar-nav > li:nth-child(4) > a {
+        position : absolute;
+        top: 125px;
+        left: -10px;
+    }
+    .navbar .navbar-nav > li:nth-child(5) > a {
+        position : absolute;
+        top: 165px;
+        left: -14px;
+        font-size: 12px;
+    }
+    .navbar .navbar-nav > li:nth-child(6) > a {
+         position : absolute;
+         top: 245px;
+         left: -7px;
+     }
+    .navbar .navbar-nav > li:nth-child(7) > a {
+          position : absolute;
+          top: 285px;
+          left: -7px;
+      }
+
     #date {
         text-align: center;
         padding-left: -20px;
@@ -54,10 +100,15 @@ body {
         width: 40px;
     }
     .navbar .fa-apple {
-        font-size: 28px;
+        position: absolute;
+        top: 5px;
+        left : 6px;
+        font-size: 22px;
     }
 }
-#head {
+
+/*** DOCKER APP ***/
+#docker {
     position:fixed;
     bottom:0;
 }
@@ -82,3 +133,5 @@ body {
 #icons li a:hover {
     font-size: 75px;
 }
+
+/*** WIDGET ***/

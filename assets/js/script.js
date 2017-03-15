@@ -1,6 +1,8 @@
 /**
  * Created by Thomas on 13/03/2017.
  */
+
+/*** FUNCTION WINDOW ***/
 function formatAMPM(date) {
     var hours = date.getHours();
     var minutes = date.getMinutes();
@@ -29,7 +31,7 @@ function changeSize() {
     }
 }
 
-window.setInterval(loadDate,30000);
+window.setInterval(loadDate,10000);
 window.setInterval(changeSize,1);
 $(document).ready(function () {
     loadDate();
