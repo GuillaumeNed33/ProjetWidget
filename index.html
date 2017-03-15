@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/apple.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
@@ -35,7 +36,16 @@
     </div>
     <div class="row">
         <div id="docker" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <ul class=" text-center "id="icons">
+            <ul class="text-center" id="icons">
+                <li><a href="#"><img src="assets/img/clock.png" onclick="openClockWidget()"></a></li>
+                <li><a href="#"><img src="assets/img/meteo.png" onclick="openMeteoWidget()"></a></li>
+                <li><a href="#"><img src="assets/img/photo.png" onclick="openPhotoWidget()"></a></li>
+                <li><a href="#"><img src="assets/img/twitter.png" onclick="openTwitterWidget()"></a></li>
+                <li><a href="#"><img src="assets/img/youtube.png" onclick="openYoutubeWidget()"></a></li>
+                <li><a href="#"><img src="assets/img/map.png" onclick="openMapWidget()"></a></li>
+                <li><a href="#"><img src="assets/img/sport.png" onclick="openSportWidget()"></a></li>
+                <li><a href="#"><img src="assets/img/trash.png" onclick="DeleteWidget()"></a></li>
+                <!--
                 <li><a class="fa fa-clock-o" onclick="openClockWidget()" style="color: black"></a></li>
                 <li><a class="fa fa-cloud" onclick="openMeteoWidget()" style="color: #ffffff"></a></li>
                 <li><a class="fa fa-picture-o" onclick="openPhotoWidget()" style="color: saddlebrown"></a></li>
@@ -44,6 +54,7 @@
                 <li><a class="fa fa-map" onclick="openMapWidget()" style="color: green"></a></li>
                 <li><a class="fa fa-bicycle" onclick="openSportWidget()" style="color: black"></a></li>
                 <li><a class="fa fa-trash" onclick="DeleteWidget()" style="color: #444"></a></li>
+                -->
             </ul>
         </div>
     </div>

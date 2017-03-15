@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2eaef18d-ba3d-460a-a9fc-3c45a91aa286" name="local" url="http://localhost/MiniProjet">
+        <fileTransfer port="0" mountedRoot="C:\wamp64\www\MiniProjet" accessType="MOUNT" />
+      </webServer>
+      <webServer id="318300de-9a22-4392-b076-8e6f25a759f6" name="raxus_ssh2" url="http://info-timide.iut.u-bordeaux.fr/perso/2017/gnedelec001/MiniProjet">
+        <fileTransfer host="info-ssh2.iut.u-bordeaux.fr" port="22" rootFolder="/mnt/raxus/www/perso/2017/gnedelec001" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
