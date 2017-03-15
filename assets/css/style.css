@@ -58,7 +58,7 @@ body {
         left: 0;
         max-width: 30px;
         height: 100%;
-        box-shadow: 3px 0px 5px 0px #2E2E2E;
+        box-shadow: 3px 0 5px 0 #2E2E2E;
         background-image: linear-gradient(to right, #d5d5d5, #888);
         font-size: 16px;
     }
@@ -133,6 +133,7 @@ body {
 
 #icons li img {
     width: 60px;
+    margin-left: 10px;
     text-decoration: none;
     -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
     transition: all 1s;
@@ -144,3 +145,15 @@ body {
 }
 
 /*** WIDGET ***/
+
+.panel {
+    width: 300px;
+}
+.panel-heading {
+    padding: 0;
+    height: 25px;
+    line-height: 25px;
+    background-image:linear-gradient(#d5d5d5, #888);
+    text-align: center;
+    font-weight: bold;
+}

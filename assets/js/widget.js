@@ -78,7 +78,7 @@ function createDateTimeWidget(content)
 }
 
 
-function openClockWidget()
+function openClockWidget2()
 {
     var mainContent = document.getElementById("content");
     var base = document.createElement("div");
@@ -96,8 +96,11 @@ function openClockWidget()
     $(mainContent).append($(base));
 }
 
-function openClockWidget2() {
-
+function openClockWidget() {
+$("#content").append('<div class="panel panel-default">'+
+'<div class="panel-heading"><img src="assets/img/clock.png" style="width: 20px; margin-right: 5px; margin-top: 0;">Calendar & Date</div>' +
+    '<div class="panel-body">' + 'Voici mon Horloge ' + '</div>' +
+'</div>');
 }
 
 function openMeteoWidget() {
