@@ -150,12 +150,34 @@ body {
     width: 300px;
 }
 .panel-heading {
+    display: inline-block;
+    width: 100%;
     padding: 0;
+    padding-left: 5px;
     height: 25px;
-    line-height: 25px;
     background-image:linear-gradient(#d5d5d5, #888);
+
+}
+.panel-heading .logo {
+    width: 20px;
+    margin-right: 5px;
+    margin-top: 0;
+}
+.title {
     text-align: center;
     font-weight: bold;
+    line-height: 0;
+    margin-left: 0;
+}
+
+.panel-heading .buttons {
+    margin-right: 0;
+}
+
+.panel-heading .buttons img {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
 }
 
 /* STYLE HORLOGE */
@@ -210,4 +232,18 @@ div.clock div.time strong { font-weight: 100;
     font-size: 0.8em;
     margin-left: 5px;
     color: #666;
+}
+
+/* STYLE METEO */
+#contentMeteo {
+    text-align: center;
+}
+#contentMeteo h2 {
+    font-size: 48px;
+}
+#contentMeteo h3 {
+    color : #333333;
+}
+#contentMeteo img {
+    width: 100px;
 }
