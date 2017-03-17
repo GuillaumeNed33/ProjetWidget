@@ -1,7 +1,6 @@
 /**
  * Created by Guillaume on 15/03/2017.
  */
-
 /*** CLOCK ***/
 function openClockWidget() {
     $("#content").append(
@@ -81,12 +80,12 @@ function openMeteoWidget() {
         '<div class="panel panel-default" style="margin-left: 500px;">'+
         '<div class="panel-heading"><img src="assets/img/meteo.png" style="width: 20px; margin-right: 5px; margin-top: 0;">Meteo</div>' +
         '<div class="panel-body">' +
-        '<div id="formMeteo" class="input-group" style="text-align:center;">'+
+        '<form id="formMeteo" class="input-group" style="text-align:center;">'+
         '<input type="text" class="form-control" id="city" placeholder="Entrer une Ville">' +
         '<div class="input-group-addon">' +
         '<button class="glyphicon glyphicon-search" type="submit" onclick="loadMeteo()" style="background-color: transparent; border: 0;"></button>'+
         '</div>' +
-        '</div>'+
+        '</form>'+
         '<div id="contentMeteo"></div>' +
         '</div>'+
         '</div>');
@@ -100,12 +99,11 @@ function loadMeteo() {
     $.getJSON(url,function(data){
         var icone = data.weather[0].icon;
         var temperature = data.main.temp;
-        var desc = data.weather.main;
         temperature= parseFloat(temperature);
         parseInt(temperature);
         temperature =parseInt(temperature-273.15);
         temperature = temperature.toString();
-        $('#contentMeteo').append("Temps : <img src='http://openweathermap.org/img/w/"+ icone + ".png' /><br/><br/>" + desc);
+        $('#contentMeteo').append("Temps : <img src='http://openweathermap.org/img/w/"+ icone + ".png' /><br/><br/>");
         $('#contentMeteo').append('Température : ' + temperature + '°C<br>');
     })
 }
@@ -120,12 +118,12 @@ function openPhotoWidget() {
         '<div class="panel panel-default" style="margin-left: 500px; width: 400px;">'+
         '<div class="panel-heading"><img src="assets/img/photo.png" style="width: 20px; margin-right: 5px; margin-top: 0;">Photos</div>' +
         '<div class="panel-body">' +
-        '<div id="formPhotos" class="input-group" style="text-align:center;">'+
+        '<form id="formPhotos" class="input-group" style="text-align:center;">'+
         '<input type="text" class="form-control" id="searchPhoto" placeholder="Recherche de Photos">' +
         '<div class="input-group-addon">' +
         '<button class="glyphicon glyphicon-search" type="submit" onclick="loadPhoto()" style="background-color: transparent; border: 0;"></button>'+
         '</div>' +
-        '</div>'+
+        '</form>'+
         '<div id="contentPhoto"></div>' +
         '</div>'+
         '</div>');
@@ -136,7 +134,13 @@ function openPhotoWidget() {
 
 /*** TWITTER ***/
 function openTwitterWidget() {
-
+    $("#content").append(
+        '<div class="panel panel-default" style="margin-left: 500px; width: 400px;">'+
+        '<div class="panel-heading"><img src="assets/img/twitter.png" style="width: 20px; margin-right: 5px; margin-top: 0;">Twitter</div>' +
+        '<div class="panel-body">' +
+        '<div id="contentTwitter"><a class="twitter-timeline" data-lang="fr" data-width="400" data-height="400" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/MichelBillaud">Tweets by MichelBillaud</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>' +
+        '</div>'+
+        '</div>');
 }
 
 
@@ -147,12 +151,12 @@ function openYoutubeWidget() {
         '<div class="panel panel-default" style="margin-left: 500px; width: 400px;">'+
         '<div class="panel-heading"><img src="assets/img/youtube.png" style="width: 20px; margin-right: 5px; margin-top: 0;">Youtube</div>' +
         '<div class="panel-body">' +
-        '<div id="formYoutube" class="input-group" style="text-align:center;">'+
+        '<form id="formYoutube" class="input-group" style="text-align:center;">'+
         '<input type="text" class="form-control" id="searchYoutube" placeholder="Entrer des mots clefs">' +
         '<div class="input-group-addon">' +
         '<button class="glyphicon glyphicon-search" type="submit" onclick="loadYoutube()" style="background-color: transparent; border: 0;"></button>'+
         '</div>' +
-        '</div>'+
+        '</form>'+
         '<div id="contentYoutube"></div>' +
         '</div>'+
         '</div>');
@@ -173,12 +177,12 @@ function openMapWidget() {
         '<div class="panel panel-default" style="margin-left: 500px; width: 400px;">'+
         '<div class="panel-heading"><img src="assets/img/map.png" style="width: 20px; margin-right: 5px; margin-top: 0;">Google Maps</div>' +
         '<div class="panel-body">' +
-        '<div id="formMap" class="input-group" style="text-align:center;">'+
+        '<form id="formMap" class="input-group" style="text-align:center;">'+
         '<input type="text" class="form-control" id="cityMap" placeholder="Choisir la ville de départ vers l\'IUT">' +
         '<div class="input-group-addon">' +
         '<button class="glyphicon glyphicon-search" type="submit" onclick="loadMap()" style="background-color: transparent; border: 0;"></button>'+
         '</div>' +
-        '</div>'+
+        '</form>'+
         '<div id="contentMap"></div>' +
         '</div>'+
         '</div>');
