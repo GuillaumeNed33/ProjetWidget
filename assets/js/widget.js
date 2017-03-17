@@ -363,7 +363,7 @@ function openSportWidget() {
     if(existWidgetSport==false) {
         existWidgetSport=true;
         $("#content").append(
-            '<div id="sportWid" class="panel panel-default" style="margin-left: 500px;">' +
+            '<div id="sportWid" class="panel panel-default" style="width:450px; margin-left: 500px;">' +
             '<div class="panel-heading">'+
             '<div class="buttons">' +
             '<a href="#" onclick="closeWidget(\'sportWid\')">' +
@@ -387,18 +387,66 @@ function openSportWidget() {
 }
 
 function loadSportResult() {
-    //key : 71af22e447bd4255b615b0332ba9d661
+    var BayernId = 5;
+    var url = "http://api.football-data.org/v1/teams/" + BayernId.toString();
+
+
     $.ajax({
-        headers: { 'X-Auth-Token': '71af22e447bd4255b615b0332ba9d661' },
-        url: 'http://api.football-data.org/v1/fixtures?timeFrame=n1',
+        headers: {'X-Auth-Token': '71af22e447bd4255b615b0332ba9d661'},
+        url: 'http://api.football-data.org/v1/teams/' + BayernId,
         dataType: 'json',
-        type: 'GET',
-    }).done(function(response) {
-        // do something with the response, e.g. isolate the id of a linked resource
-        var regex = /.*?(\d+)$/; // the ? makes the first part non-greedy
-        var res = regex.exec(response.fixtures[0]._links.awayTeam.href);
-        var teamId = res[1];
-        console.log(teamId);
+        type: 'GET'
+    }).done(function (response) {
+        $("#contentSport")
+            .append("<img src='" + response.crestUrl + "' style='width: 100px; height: 100px; margin: 5px;' class='pull-left'>")
+            .append("<h3 class='text-center' style='padding-top: 20px;'>" + response.name + "</h3>")
+            .append("<hr>")
+            .append("<p class='text-center' style='margin-bottom: 30px;'>Valeur de l'équipe : " + response.squadMarketValue + "</p>");
+
+        $.ajax({
+            headers: {'X-Auth-Token': '71af22e447bd4255b615b0332ba9d661'},
+            url: response._links.fixtures.href,
+            dataType: 'json',
+            type: 'GET'
+        }).done(function (response) {
+            $("#contentSport")
+                .append($("<div id='sport1'></div>")
+                    .append("<h4 class='text-center' style='font-weight: bold;margin-bottom: 15px;'>Résultat des 3 derniers Matchs</h4>")
+                    .append('<table class="table table-hover  table-condensed">' +
+                        '<thead><tr><th width="200px" class="text-center">Equipes</th><th width="60px" class="text-center">Score</th><th width="150px" class="text-center">Date</th></tr></thead>' +
+                        '<tbody id="resultContent"></tbody>' +
+                        '</table>'));
+
+            var fixtures = response.fixtures;
+            var nb_match = 0;
+
+
+            for (var i = response.count - 1; i >= 0 && nb_match < 3; i--) {
+                if (fixtures[i].status === "FINISHED") {
+                    var fixture = fixtures[i];
+
+                    if((fixture.result.goalsHomeTeam>fixture.result.goalsAwayTeam && fixture.homeTeamName == "FC Bayern München") || (fixture.result.goalsHomeTeam<fixture.result.goalsAwayTeam && fixture.awayTeamName == "FC Bayern München")) {
+                        $("#resultContent").append("<tr>" +
+                            "<td class='text-center' style='vertical-align: middle'>" + fixture.homeTeamName + "<br> - <br> " + fixture.awayTeamName + "</td>" +
+                            "<td class='text-center' style='vertical-align: middle; color: green'><b>" + fixture.result.goalsHomeTeam + " - " + fixture.result.goalsAwayTeam + "</b></td>" +
+                            "<td class='text-center' style='vertical-align: middle'>" + fixture.date.substring(0, 10) + "</td></tr>"
+                        );                    }
+                    else if((fixture.result.goalsHomeTeam<fixture.result.goalsAwayTeam && fixture.homeTeamName == "FC Bayern München") || (fixture.result.goalsHomeTeam>fixture.result.goalsAwayTeam && fixture.awayTeamName == "FC Bayern München")) {
+                        $("#resultContent").append("<tr>" +
+                            "<td class='text-center' style='vertical-align: middle'>" + fixture.homeTeamName + "<br> - <br> " + fixture.awayTeamName + "</td>" +
+                            "<td class='text-center' style='vertical-align: middle; color: red'><b>" + fixture.result.goalsHomeTeam + " - " + fixture.result.goalsAwayTeam + "</b></td>" +
+                            "<td class='text-center' style='vertical-align: middle'>" + fixture.date.substring(0, 10) + "</td></tr>"
+                        );                    }
+                    else {
+                        $("#resultContent").append("<tr>" +
+                            "<td class='text-center' style='vertical-align: middle'>" + fixture.homeTeamName + "<br> - <br> " + fixture.awayTeamName + "</td>" +
+                            "<td class='text-center' style='vertical-align: middle'><b>" + fixture.result.goalsHomeTeam + " - " + fixture.result.goalsAwayTeam + "</b></td>" +
+                            "<td class='text-center' style='vertical-align: middle'>" + fixture.date.substring(0, 10) + "</td></tr>"
+                        );                    }
+                    nb_match++;
+                }
+            }
+        });
     });
 }
 
