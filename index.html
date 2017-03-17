@@ -13,9 +13,11 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/js/widget.js"></script>
     <script src="assets/js/uselessweb.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=cléGoogle&sensor=false"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9uYrVlWePmplmCxu_J2qGcbPRS3xte_g&sensor=true"></script>
+
 </head>
 <body>
+<script>window.onload = loadMap()</script>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -48,16 +50,6 @@
                 <li><a href="#"><img src="assets/img/map.png" onclick="openMapWidget()"></a></li>
                 <li><a href="#"><img src="assets/img/sport.png" onclick="openSportWidget()"></a></li>
                 <li><a href="#"><img src="assets/img/trash.png" onclick="DeleteWidget()"></a></li>
-                <!--
-                <li><a class="fa fa-clock-o" onclick="openClockWidget()" style="color: black"></a></li>
-                <li><a class="fa fa-cloud" onclick="openMeteoWidget()" style="color: #ffffff"></a></li>
-                <li><a class="fa fa-picture-o" onclick="openPhotoWidget()" style="color: saddlebrown"></a></li>
-                <li><a class="fa fa-twitter" onclick="openTwitterWidget()" style="color: #31b0d5"></a></li>
-                <li><a class="fa fa-youtube-play" onclick="openYoutubeWidget()" style="color: red"></a></li>
-                <li><a class="fa fa-map" onclick="openMapWidget()" style="color: green"></a></li>
-                <li><a class="fa fa-bicycle" onclick="openSportWidget()" style="color: black"></a></li>
-                <li><a class="fa fa-trash" onclick="DeleteWidget()" style="color: #444"></a></li>
-                -->
             </ul>
         </div>
     </div>

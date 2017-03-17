@@ -183,16 +183,27 @@ function openPhotoWidget() {
             '<button class="glyphicon glyphicon-search" type="submit" onclick="loadPhoto()" style="background-color: transparent; border: 0;"></button>' +
             '</div>' +
             '</form>' +
-            '<div id="contentPhoto"></div>' +
+            '<div id="contentPhoto" style="margin-top: 20px;"></div>' +
             '</div>' +
             '</div>');
     }
 }
 
 function loadPhoto() {
-    //27844e5b0b4a97b0621bd50aa2d424c3 cle
-    //f9200d08f9caf63e secret
+    var link = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
+    $.getJSON( link, {
+        tags: $("#searchPhoto").val(),
+        tagmode: "any",
+        format: "json"
+    }).done(function (data) {
+        var img_link = data.items[0].media.m;
+        $("#contentPhoto").html("");
+        $("#contentPhoto").append(
+            '<center>' +
+            '<img src="'+ img_link + '" style="max-width: 250px;">' +
+            '</center>');
+    });
 }
 
 
@@ -288,40 +299,61 @@ function openMapWidget() {
             '</div>'+
             '<div class="title">' +
             '<img class="logo" src="assets/img/map.png">Google Maps</div></div>' +
-            '<div class="panel-body">' +
+            '<center class="panel-body">' +
             '<form id="formMap" class="input-group" style="text-align:center;">' +
             '<input type="text" class="form-control" id="cityMap" placeholder="Choisir la ville de départ vers l\'IUT">' +
             '<div class="input-group-addon">' +
             '<button class="glyphicon glyphicon-search" type="submit" onclick="loadMap()" style="background-color: transparent; border: 0;"></button>' +
             '</div>' +
             '</form>' +
-            '<div id="contentMap"></div>' +
-            '</div>' +
+            '<div id="contentMap" style="margin-top: 25px;height: 300px; width: 300px;"></div>' +
+            '</center></div>' +
             '</div>');
+        loadMap();
     }
 }
 
+/*** CLE API GOOGLE = AIzaSyB9uYrVlWePmplmCxu_J2qGcbPRS3xte_g ***/
 function loadMap() {
-    /* $('#contentMap').append(
-     '<script async defer' +
-     'src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9uYrVlWePmplmCxu_J2qGcbPRS3xte_g&callback=initMap">' +
-     '</script>');
+    var iut = new google.maps.LatLng(44.791144, -0.608849);
+    var myLatLng = {lat: 44.791144, lng: -0.608849};
 
-     map = new google.maps.Map(document.getElementById('contentMap'), {
-     center: {lat: -34.397, lng: 150.644},
-     zoom: 8
-     });*/
-    /*** CLE API GOOGLE = AIzaSyB9uYrVlWePmplmCxu_J2qGcbPRS3xte_g ***/
-    //  google.maps.event.addDomListener(window, 'load', initialize);
-}
-
-function initialize() {
     var myOptions = {
-        zoom: 15,
-        center: new google.maps.LatLng(40.73, -73.98),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        zoom      : 14,
+        center    : iut,
+        mapTypeId : google.maps.MapTypeId.TERRAIN,
+        maxZoom   : 20
     };
-    map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+
+    var map = new google.maps.Map(document.getElementById('contentMap'), myOptions);
+
+
+    var direction = new google.maps.DirectionsRenderer({
+        map  : map
+    });
+    $('#contentMap').append('<center>');
+    var origine = document.getElementById("cityMap").value;
+    if(origine==null || origine=="") {
+        var marker = new google.maps.Marker({
+            map: map,
+            position: myLatLng,
+            title: 'IUT Informatique de Bordeaux'
+        });
+    }
+
+    var request = {
+        origin: origine,
+        destination: iut,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+    };
+
+    var directionsService = new google.maps.DirectionsService();
+    directionsService.route(request, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            direction.setDirections(response);
+        }
+    });
 }
 
 
@@ -330,8 +362,44 @@ function initialize() {
 function openSportWidget() {
     if(existWidgetSport==false) {
         existWidgetSport=true;
+        $("#content").append(
+            '<div id="sportWid" class="panel panel-default" style="margin-left: 500px;">' +
+            '<div class="panel-heading">'+
+            '<div class="buttons">' +
+            '<a href="#" onclick="closeWidget(\'sportWid\')">' +
+            '<img src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
+            '</a>'+
+            '<a href="#" onclick="reduceWidget(\'sportWid\')">' +
+            '<img src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
+            '</a>'+
+            '<a href="#" onclick="zoomWidget(\'sportWid\')">' +
+            '<img src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
+            '</a>'+
+            '</div>'+
+            '<div class="title">' +
+            '<img class="logo" src="assets/img/sport.png">Sport</div></div>' +
+            '<div class="panel-body">' +
+            '<div id="contentSport"></div>' +
+            '</div>' +
+            '</div>');
+        loadSportResult();
     }
+}
 
+function loadSportResult() {
+    //key : 71af22e447bd4255b615b0332ba9d661
+    $.ajax({
+        headers: { 'X-Auth-Token': '71af22e447bd4255b615b0332ba9d661' },
+        url: 'http://api.football-data.org/v1/fixtures?timeFrame=n1',
+        dataType: 'json',
+        type: 'GET',
+    }).done(function(response) {
+        // do something with the response, e.g. isolate the id of a linked resource
+        var regex = /.*?(\d+)$/; // the ? makes the first part non-greedy
+        var res = regex.exec(response.fixtures[0]._links.awayTeam.href);
+        var teamId = res[1];
+        console.log(teamId);
+    });
 }
 
 
