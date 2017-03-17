@@ -15,7 +15,7 @@ function formatAMPM(date) {
 }
 
 function loadDate() {
-    var dayNames = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+    var dayNames = ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."]
     var newDate = new Date();
     newDate.setDate(newDate.getDate());
     $('#date').html(dayNames[newDate.getDay()] + " " + formatAMPM(newDate));
