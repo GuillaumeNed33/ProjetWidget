@@ -49,6 +49,7 @@ body {
 /*** NAVBAR ECRAN PETIT ***/
 @media (max-width: 767px) {
     .navbar {
+        border-radius: 0;
         padding-left: 0;
         padding-right: 0;
         margin-left: 0;
@@ -249,3 +250,37 @@ div.clock div.time strong { font-weight: 100;
 }
 
 /* STYLE SPORT */
+@media (min-width: 768px) {
+    #aPropos {
+        color: black;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        width: 300px;
+        height: 225px;
+        position: absolute;
+        left: -2px;
+        top:30px;
+    }
+}
+
+@media (max-width: 767px) {
+    #aPropos {
+        color: black;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        width: 300px;
+        height: 225px;
+        position: absolute;
+        left: 30px;
+        top:0px;
+    }
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 1em 0;
+    padding: 0;
+}

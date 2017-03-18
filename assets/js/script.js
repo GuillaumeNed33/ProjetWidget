@@ -2,6 +2,8 @@
  * Created by Thomas on 13/03/2017.
  */
 
+var existAPropos = false;
+
 /*** FUNCTION WINDOW ***/
 function formatAMPM(date) {
     var hours = date.getHours();
@@ -24,7 +26,7 @@ function loadDate() {
 function changeSize() {
     var finder = document.getElementById("finder");
     if($(window).width() >= 768) {
-        $('#finder').html("Finder");
+        $('#finder').html("A Propos");
     }
     else {
         $('#finder').html("");
@@ -36,4 +38,29 @@ window.setInterval(changeSize,1);
 $(document).ready(function () {
     loadDate();
     changeSize();
-})
+});
+
+/*** FONCTION NAVBAR ***/
+function closePopUp() {
+    if(existAPropos == true) {
+        jQuery(function ($) {
+
+        });
+    }
+}
+
+function openAPropos() {
+    if (existAPropos == false) {
+        $('#aPropos').css('visibility', 'visible');
+        existAPropos = true;
+    }
+    else {
+        removeApropos();
+    }
+}
+
+function removeApropos() {
+    existAPropos = false;
+    $('#aPropos').css('visibility', 'hidden');
+
+}
