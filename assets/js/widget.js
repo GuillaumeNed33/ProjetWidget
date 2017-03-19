@@ -2,6 +2,21 @@
  * Created by Guillaume on 15/03/2017.
  */
 
+function widgetHeader(id) {
+    return '<div class="panel-heading"> ' +
+        '<div class="pull-left">' +
+        '<a href="#" onclick="closeWidget(id)">' +
+        '<img class="icons" src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
+        '</a>' +
+        '<a href="#" onclick="reduceWidget(id)">' +
+        '<img class="icons" src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
+        '</a>' +
+        '<a href="#" onclick="zoomWidget(id)">' +
+        '<img class="icons" src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
+        '</a>' +
+        '</div>';
+}
+
 var existWidgetClock = false;
 var existWidgetMeteo = false;
 var existWidgetPhotos = false;
@@ -24,20 +39,10 @@ function openClockWidget() {
         existWidgetClock= true;
         $("#content").append(
             '<div id="clockWid" class="panel panel-default" style="margin-left: 100px;">' +
-            '<div class="panel-heading">' +
-            '<div class="buttons">' +
-            '<a href="#" onclick="closeWidget(\'clockWid\')">' +
-            '<img src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="reduceWidget(\'clockWid\')">' +
-            '<img src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="zoomWidget(\'clockWid\')">' +
-            '<img src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
-            '</a>'+
-            '</div>'+
+            widgetHeader("clockWid") +
             '<div class="title">' +
-            '<img class="logo" src="assets/img/clock.png">Calendar & Date</div></div>' +
+            '<img class="logo" src="assets/img/clock.png">' +
+            '<span>Calendar & Date</span></div></div>' +
             '<div id="collapseClock" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
             '<div style="text-align:center;">' +
@@ -105,11 +110,9 @@ function displayClock() {
     })(jQuery);
 }
 
-function displayCalendar() {
+/*function displayCalendar() {
 
-}
-
-
+}*/
 
 /*** METEO ***/
 function openMeteoWidget() {
@@ -117,20 +120,10 @@ function openMeteoWidget() {
         existWidgetMeteo = true;
         $("#content").append(
             '<div id="meteoWid" class="panel panel-default" style="margin-left: 500px;">' +
-            '<div class="panel-heading">'+
-            '<div class="buttons">' +
-            '<a href="#" onclick="closeWidget(\'meteoWid\')">' +
-            '<img src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="reduceWidget(\'meteoWid\')">' +
-            '<img src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="zoomWidget(\'meteoWid\')">' +
-            '<img src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
-            '</a>'+
-            '</div>'+
+            widgetHeader("meteoWid") +
             '<div class="title">' +
-            '<img class="logo" src="assets/img/meteo.png">Meteo</div></div>' +
+            '<img class="logo" src="assets/img/meteo.png">' +
+            'Meteo</div></div>' +
             '<div id="collapseMeteo" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
             '<form id="formMeteo" class="input-group" style="text-align:center;">' +
@@ -160,14 +153,12 @@ function loadMeteo() {
         parseInt(temperature);
         temperature =parseInt(temperature-273.15);
         temperature = temperature.toString();
-        $('#contentMeteo').append('<h2 id="temp">' + temperature + '°</h2>');
-        $('#contentMeteo').append('<h3>' + desc + '</h3>');
-        $('#contentMeteo').append("<img src='http://openweathermap.org/img/w/"+ icone + ".png' />");
+        $("#contentMeteo").append('<h2 id="temp">' + temperature + '°</h2>' +
+            '<h3>' + desc + '</h3>' +
+            '<img src="http://openweathermap.org/img/w/' + icone + '.png" />');
 
     })
 }
-
-
 
 /*** PHOTO ***/
 function openPhotoWidget() {
@@ -175,20 +166,10 @@ function openPhotoWidget() {
         existWidgetPhotos = true;
         $("#content").append(
             '<div id="photoWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
-            '<div class="panel-heading">'+
-            '<div class="buttons">' +
-            '<a href="#" onclick="closeWidget(\'photoWid\')">' +
-            '<img src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="reduceWidget(\'photoWid\')">' +
-            '<img src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="zoomWidget(\'photoWid\')">' +
-            '<img src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
-            '</a>'+
-            '</div>'+
+            widgetHeader("photoWid") +
             '<div class="title">' +
-            '<img class="logo" src="assets/img/photo.png">Photos</div></div>' +
+            '<img class="logo" src="assets/img/photo.png">' +
+            'Photos</div></div>' +
             '<div id="collapsePhoto" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
             '<form id="formPhotos" class="input-group" style="text-align:center;">' +
@@ -222,28 +203,16 @@ function loadPhoto() {
     });
 }
 
-
-
 /*** TWITTER ***/
 function openTwitterWidget() {
     if(existWidgetTwitter == false) {
         existWidgetTwitter = true;
         $("#content").append(
             '<div id="twitterWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
-            '<div class="panel-heading">'+
-            '<div class="buttons">' +
-            '<a href="#" onclick="closeWidget(\'twitterWid\')">' +
-            '<img src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="reduceWidget(\'twitterWid\')">' +
-            '<img src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="zoomWidget(\'twitterWid\')">' +
-            '<img src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
-            '</a>'+
-            '</div>'+
+            +widgetHeader("twitterWid") +
             '<div class="title">' +
-            '<img class="logo" src="assets/img/twitter.png">Twitter</div></div>' +
+            '<img class="logo" src="assets/img/twitter.png">' +
+            'Twitter</div></div>' +
             '<div id="collapseTwitter" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
             '<div id="contentTwitter"><a class="twitter-timeline" data-lang="fr" data-width="400" data-height="400" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/MichelBillaud">Tweets by MichelBillaud</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>' +
@@ -254,28 +223,16 @@ function openTwitterWidget() {
     }
 }
 
-
-
 /*** YOUTUBE ***/
 function openYoutubeWidget() {
     if(existWidgetYoutube == false) {
         existWidgetYoutube = true;
         $("#content").append(
             '<div id="youtubeWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
-            '<div class="panel-heading">'+
-            '<div class="buttons">' +
-            '<a href="#" onclick="closeWidget(\'youtubeWid\')">' +
-            '<img src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="reduceWidget(\'youtubeWid\')">' +
-            '<img src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="zoomWidget(\'youtubeWid\')">' +
-            '<img src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
-            '</a>'+
-            '</div>'+
+            widgetHeader("youtubeWid") +
             '<div class="title">' +
-            '<img class="logo" src="assets/img/youtube.png">Youtube</div></div>' +
+            '<img class="logo" src="assets/img/youtube.png">' +
+            'Youtube</div></div>' +
             '<div id="collapseYoutube" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
             '<form id="formYoutube" class="input-group" style="text-align:center;">' +
@@ -299,28 +256,16 @@ function loadYoutube() {
     $(video).append(res);
 }
 
-
-
 /*** MAPS ***/
 function openMapWidget() {
     if(existWidgetMaps == false) {
         existWidgetMaps = true;
         $("#content").append(
             '<div id="mapWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
-            '<div class="panel-heading">' +
-            '<div class="buttons">' +
-            '<a href="#" onclick="closeWidget(\'mapWid\')">' +
-            '<img src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="reduceWidget(\'mapWid\')">' +
-            '<img src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="zoomWidget(\'mapWid\')">' +
-            '<img src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
-            '</a>'+
-            '</div>'+
+            widgetHeader("mapWid") +
             '<div class="title">' +
-            '<img class="logo" src="assets/img/map.png">Google Maps</div></div>' +
+            '<img class="logo" src="assets/img/map.png">' +
+            'Google Maps</div></div>' +
             '<div id="collapseMaps" class="panel-collapse collapse">'+
             '<center class="panel-body">' +
             '<form id="formMap" class="input-group" style="text-align:center;">' +
@@ -381,28 +326,16 @@ function loadMap() {
     });
 }
 
-
-
 /*** SPORT ***/
 function openSportWidget() {
     if(existWidgetSport==false) {
         existWidgetSport=true;
         $("#content").append(
             '<div id="sportWid" class="panel panel-default" style="width:450px; margin-left: 500px;">' +
-            '<div class="panel-heading">'+
-            '<div class="buttons">' +
-            '<a href="#" onclick="closeWidget(\'sportWid\')">' +
-            '<img src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="reduceWidget(\'sportWid\')">' +
-            '<img src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
-            '</a>'+
-            '<a href="#" onclick="zoomWidget(\'sportWid\')">' +
-            '<img src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
-            '</a>'+
-            '</div>'+
+            widgetHeader("sportWid") +
             '<div class="title">' +
-            '<img class="logo" src="assets/img/sport.png">Sport</div></div>' +
+            '<img class="logo" src="assets/img/sport.png">' +
+            'Sport</div></div>' +
             '<div id="collapseSport" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
             '<div id="contentSport"></div>' +
@@ -417,8 +350,6 @@ function openSportWidget() {
 function loadSportResult() {
     var BayernId = 5;
     var url = "http://api.football-data.org/v1/teams/" + BayernId.toString();
-
-
     $.ajax({
         headers: {'X-Auth-Token': '71af22e447bd4255b615b0332ba9d661'},
         url: 'http://api.football-data.org/v1/teams/' + BayernId,
@@ -478,8 +409,6 @@ function loadSportResult() {
     });
 }
 
-
-
 /*** SUPPRESSION ***/
 function DeleteWidget() {
     existWidgetClock = false;
@@ -490,8 +419,8 @@ function DeleteWidget() {
     existWidgetMaps = false;
     existWidgetSport = false;
 
-    var content = document.getElementById("content");
-    $(content).html("");
+    //var content = document.getElementById("content");
+    $("#content").html("");
 
 }
 

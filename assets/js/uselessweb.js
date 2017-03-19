@@ -88,5 +88,5 @@ var sitesList = [
 
 function openUselessWeb() {
     var i = Math.floor(Math.random() * sitesList.length);
-    $("#uselessweb").attr('href',sitesList[i]);
+    $("#uselessweb").attr('href',sitesList[i]); 
 }
