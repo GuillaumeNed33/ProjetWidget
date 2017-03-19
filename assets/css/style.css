@@ -164,7 +164,7 @@ body {
     margin-top: 0;
 }
 .panel-heading .icons {
-    width: 10px;
+    width: 15px;
     margin-right: 5px;
     margin-top: 0;
 }
@@ -174,8 +174,7 @@ body {
 .title {
     font-weight: bold;
     line-height: 0px;
-    margin-left:auto;
-    margin-right: auto;
+    margin-left: 100px;
 }
 
 .panel-heading .buttons {

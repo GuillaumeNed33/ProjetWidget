@@ -2,21 +2,6 @@
  * Created by Guillaume on 15/03/2017.
  */
 
-function widgetHeader(id) {
-    return '<div class="panel-heading"> ' +
-        '<div class="pull-left">' +
-        '<a href="#" onclick="closeWidget(id)">' +
-        '<img class="icons" src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
-        '</a>' +
-        '<a href="#" onclick="reduceWidget(id)">' +
-        '<img class="icons" src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
-        '</a>' +
-        '<a href="#" onclick="zoomWidget(id)">' +
-        '<img class="icons" src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
-        '</a>' +
-        '</div>';
-}
-
 var existWidgetClock = false;
 var existWidgetMeteo = false;
 var existWidgetPhotos = false;
@@ -32,6 +17,23 @@ var extendWidgetTwitter = true;
 var extendWidgetYoutube = true;
 var extendWidgetMaps = true;
 var extendWidgetSport = true;
+
+/*** COMMON WIDGET ***/
+
+function widgetHeader(id) {
+    return '<div class="panel-heading"> ' +
+        '<div class="pull-left">' +
+        '<a href="#" onclick="closeWidget(\''+ id+ '\')">' +
+        '<img class="icons" src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
+        '</a>' +
+        '<a href="#" onclick="reduceWidget(\''+ id+ '\')">' +
+        '<img class="icons" src="assets/img/reduce.png" onmouseover="this.src=\'assets/img/reduce_hover.png\';" onmouseout="this.src=\'assets/img/reduce.png\';">' +
+        '</a>' +
+        '<a href="#" onclick="zoomWidget(\''+ id+ '\')">' +
+        '<img class="icons" src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
+        '</a>' +
+        '</div>';
+}
 
 /*** CLOCK ***/
 function openClockWidget() {
