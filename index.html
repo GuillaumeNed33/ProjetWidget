@@ -9,9 +9,12 @@
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" href="assets/img/apple.png" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 
     <!-- scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
@@ -39,7 +42,7 @@
 </nav>
 <main class="container-fluid">
     <div id="content" class="row">
-        <div id="aPropos" class="addOn" style="visibility: hidden;">
+        <div id="aPropos" class="addOn draggable" style="visibility: hidden;">
             <h3 class="text-center" style="margin-bottom: 10px;"><b>A propos</b></h3>
             <hr style="width: 100%;">
             <p class="text-center">Ce site a été réalisé par :
@@ -64,6 +67,12 @@
         </div>
     </div>
 </main>
+
+<script>
+    $( function() {
+        $( ".draggable" ).draggable();
+    } );
+</script>
 
 </body>
 </html>

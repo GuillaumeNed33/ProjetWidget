@@ -19,9 +19,8 @@ var extendWidgetMaps = true;
 var extendWidgetSport = true;
 
 /*** COMMON WIDGET ***/
-
 function widgetHeader(id) {
-    return '<div class="panel-heading"> ' +
+    var tmp = '<div class="panel-heading"> ' +
         '<div class="pull-left">' +
         '<a href="#" onclick="closeWidget(\''+ id+ '\')">' +
         '<img class="icons" src="assets/img/close.png" onmouseover="this.src=\'assets/img/close_hover.png\';" onmouseout="this.src=\'assets/img/close.png\';">' +
@@ -33,6 +32,7 @@ function widgetHeader(id) {
         '<img class="icons" src="assets/img/zoom.png" onmouseover="this.src=\'assets/img/zoom_hover.png\';" onmouseout="this.src=\'assets/img/zoom.png\';">' +
         '</a>' +
         '</div>';
+    return tmp;
 }
 
 /*** CLOCK ***/
@@ -40,7 +40,7 @@ function openClockWidget() {
     if(existWidgetClock==false) {
         existWidgetClock= true;
         $("#content").append(
-            '<div id="clockWid" class="panel panel-default" style="margin-left: 100px;">' +
+            '<div id="clockWid" class="panel panel-default draggable" style="margin-left: 100px;">' +
             widgetHeader("clockWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/clock.png">' +
@@ -207,17 +207,19 @@ function loadPhoto() {
 
 /*** TWITTER ***/
 function openTwitterWidget() {
-    if(existWidgetTwitter == false) {
+    if (existWidgetTwitter == false) {
         existWidgetTwitter = true;
         $("#content").append(
             '<div id="twitterWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
-            +widgetHeader("twitterWid") +
+            widgetHeader("twitterWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/twitter.png">' +
             'Twitter</div></div>' +
-            '<div id="collapseTwitter" class="panel-collapse collapse">'+
+            '<div id="collapseTwitter" class="panel-collapse collapse">' +
             '<div class="panel-body">' +
-            '<div id="contentTwitter"><a class="twitter-timeline" data-lang="fr" data-width="400" data-height="400" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/MichelBillaud">Tweets by MichelBillaud</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>' +
+            '<div id="contentTwitter"></div>' +
+            '<a class="twitter-timeline" data-lang="fr" data-width="400" data-height="400" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/MichelBillaud">Tweets by MichelBillaud</a>' +
+            '<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>' +
             '</div>' +
             '</div>' +
             '</div>');
@@ -285,7 +287,6 @@ function openMapWidget() {
     }
 }
 
-/*** CLE API GOOGLE = AIzaSyB9uYrVlWePmplmCxu_J2qGcbPRS3xte_g ***/
 function loadMap() {
     var iut = new google.maps.LatLng(44.791144, -0.608849);
     var myLatLng = {lat: 44.791144, lng: -0.608849};

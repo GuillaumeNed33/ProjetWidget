@@ -64,3 +64,4 @@ function removeApropos() {
     $('#aPropos').css('visibility', 'hidden');
 
 }
+/*** DRAG AND DROP ***/

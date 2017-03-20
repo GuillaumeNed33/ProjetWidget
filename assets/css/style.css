@@ -3,7 +3,7 @@ body {
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
 }
-
+html { overflow-y: hidden; }
 
 /*** NAVBAR GENERAL ***/
 .navbar {
@@ -145,11 +145,12 @@ body {
     width: 90px;
 }
 
-/*** WIDGET ***/
 
+/*** WIDGET ***/
 .panel {
     width: 300px;
 }
+
 .panel-heading {
     display: inline-block;
     width: 100%;
@@ -158,19 +159,23 @@ body {
     background-image:linear-gradient(#d5d5d5, #888);
 
 }
+
 .panel-heading .logo {
     width: 20px;
     margin-right: 5px;
     margin-top: 0;
 }
+
 .panel-heading .icons {
     width: 15px;
     margin-right: 5px;
     margin-top: 0;
 }
+
 .panel-heading a {
     text-decoration: none;
 }
+
 .title {
     font-weight: bold;
     line-height: 0px;
@@ -187,37 +192,45 @@ body {
     margin-right: 5px;
 }
 
+
 /* STYLE HORLOGE */
 html #MeteoWid{
     font-family: 'Open Sans', Arial, sans-serif;
 }
+
 a#MeteoWid {
     text-decoration: none;
     color: #000;
 }
+
 div.clock {
     cursor: pointer;
     width: 100%;
     text-align: center;
 }
+
 div.clock a {
     color: #333;
     font-size: 18px;
     font-weight: bold;
     text-decoration: none;
 }
+
 div.clock a:hover {
     text-decoration: underline;
 }
+
 div.clock div.date {
     color: #777;
     font-size: 1.5em;
     margin: 10px 0;
 }
+
 div.clock div.time {
     font-size: 3em;
     font-weight: 200;
 }
+
 div.clock div.time span {
     border-radius: 5px; padding: 1px 4px 3px 4px;
     color: #fff; background: #000;
@@ -227,6 +240,7 @@ div.clock div.time span {
     background: -ms-linear-gradient(top, #555, #000);
     background: -o-linear-gradient(top, #555, #000);
 }
+
 div.clock div.time span:nth-child(3) {
     color: #333; background: #ddd;
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#ccc));
@@ -235,25 +249,31 @@ div.clock div.time span:nth-child(3) {
     background: -ms-linear-gradient(top, #eee, #ccc);
     background: -o-linear-gradient(top, #eee, #ccc);
 }
+
 div.clock div.time strong { font-weight: 100;
     font-size: 0.8em;
     margin-left: 5px;
     color: #666;
 }
 
+
 /* STYLE METEO */
 #contentMeteo {
     text-align: center;
 }
+
 #contentMeteo h2 {
     font-size: 48px;
 }
+
 #contentMeteo h3 {
     color : #333333;
 }
+
 #contentMeteo img {
     width: 100px;
 }
+
 
 /* STYLE SPORT */
 @media (min-width: 768px) {
