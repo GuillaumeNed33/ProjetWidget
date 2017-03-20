@@ -72,9 +72,7 @@ function openClockWidget() {
         $('#collapseClock').collapse('show');
         displayClock();
         $( function() {
-            $( ".draggable" ).draggable({
-                containment : 'main'
-            });
+            $( ".draggable" ).draggable();
         } );
     }
 }
@@ -150,9 +148,7 @@ function openMeteoWidget() {
             '</div>');
         $('#collapseMeteo').collapse('show');
         $( function() {
-            $( ".draggable" ).draggable({
-                containment : 'main'
-            });
+            $( ".draggable" ).draggable();
         } );
     }
 }
@@ -201,9 +197,7 @@ function openPhotoWidget() {
             '</div>');
         $('#collapsePhoto').collapse('show');
         $( function() {
-            $( ".draggable" ).draggable({
-                containment : 'main'
-            });
+            $( ".draggable" ).draggable();
         } );
     }
 }
@@ -245,9 +239,7 @@ function openTwitterWidget() {
             '</div>');
         $('#collapseTwitter').collapse('show');
         $( function() {
-            $( ".draggable" ).draggable({
-                containment : 'main'
-            });
+            $( ".draggable" ).draggable();
         } );
     }
 }
@@ -276,9 +268,7 @@ function openYoutubeWidget() {
             '</div>');
         $('#collapseYoutube').collapse('show');
         $( function() {
-            $( ".draggable" ).draggable({
-                containment : 'main'
-            });
+            $( ".draggable" ).draggable();
         } );
     }
 }
@@ -315,9 +305,7 @@ function openMapWidget() {
         $('#collapseMaps').collapse('show');
         loadMap();
         $( function() {
-            $( ".draggable" ).draggable({
-                containment : 'main'
-            });
+            $( ".draggable" ).draggable();
         } );
     }
 }
@@ -383,9 +371,7 @@ function openSportWidget() {
         $('#collapseSport').collapse('show');
         loadSportResult();
         $( function() {
-            $( ".draggable" ).draggable({
-                containment : 'main'
-            });
+            $( ".draggable" ).draggable();
         } );
     }
 }
@@ -454,19 +440,48 @@ function loadSportResult() {
 
 /*** SUPPRESSION ***/
 function DeleteWidget() {
-    nbWidget = 0;
-    columnActive = columnOne;
-    existWidgetClock = false;
-    existWidgetMeteo = false;
-    existWidgetPhotos = false;
-    existWidgetTwitter = false;
-    existWidgetYoutube = false;
-    existWidgetMaps = false;
-    existWidgetSport = false;
-    $(columnOne).html("");
-    $(columnTwo).html("");
-    $(columnThree).html("");
+    $('#clockWid').empty();
+    $('#clockWid').css('animation-name', 'test');
+    $('#clockWid').css('animation-duration', '0.2s').fadeOut();
 
+    $('#meteoWid').empty();
+    $('#meteoWid').css('animation-name', 'test');
+    $('#meteoWid').css('animation-duration', '0.2s').fadeOut();
+
+    $('#photoWid').empty();
+    $('#photoWid').css('animation-name', 'test');
+    $('#photoWid').css('animation-duration', '0.2s').fadeOut();
+
+    $('#twitterWid').empty();
+    $('#twitterWid').css('animation-name', 'test');
+    $('#twitterWid').css('animation-duration', '0.2s').fadeOut();
+
+    $('#youtubeWid').empty();
+    $('#youtubeWid').css('animation-name', 'test');
+    $('#youtubeWid').css('animation-duration', '0.2s').fadeOut();
+
+    $('#mapWid').empty();
+    $('#mapWid').css('animation-name', 'test');
+    $('#mapWid').css('animation-duration', '0.2s').fadeOut();
+
+    $('#sportWid').empty();
+    $('#sportWid').css('animation-name', 'test');
+    $('#sportWid').css('animation-duration', '0.2s').fadeOut();
+
+    setTimeout(function(){
+        nbWidget = 0;
+        columnActive = columnOne;
+        existWidgetClock = false;
+        existWidgetMeteo = false;
+        existWidgetPhotos = false;
+        existWidgetTwitter = false;
+        existWidgetYoutube = false;
+        existWidgetMaps = false;
+        existWidgetSport = false;
+        $(columnOne).html("");
+        $(columnTwo).html("");
+        $(columnThree).html("");
+    },1000);
 }
 
 function closeWidget(id) {
@@ -498,11 +513,14 @@ function closeWidget(id) {
         default:
             break;
     }
-    var wid = document.getElementById(id);
-    $(wid).fadeOut(0);
-    $(wid).empty();
-    wid.parentNode.removeChild(wid);
 
+    var wid = document.getElementById(id);
+    $(wid).empty();
+    $(wid).css('animation-name', 'test');
+    $(wid).css('animation-duration', '0.2s').fadeOut();
+    setTimeout(function(){
+        wid.parentNode.removeChild(wid);
+    },100);
 }
 
 function reduceWidget(id) {

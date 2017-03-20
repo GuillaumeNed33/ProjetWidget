@@ -36,7 +36,9 @@ body {
     }
 }
 
-
+main {
+    height:100%;
+}
 /*** NAVBAR GENERAL ***/
 .navbar {
     border: solid 0;
@@ -148,12 +150,21 @@ body {
 
 
 /*** DOCKER APP ***/
-#docker {
-    z-index: 20;
-    position:fixed;
-    bottom: 0;
+@media (max-width: 900px) {
+    #docker {
+        z-index: 20;
+        position:fixed;
+        bottom: 25px;
+    }
 }
 
+@media (min-width: 900px) {
+    #docker {
+        z-index: 20;
+        position:fixed;
+        bottom: 0;
+    }
+}
 #icons {
     list-style-type: none;
     font-size: 48px;
@@ -360,4 +371,9 @@ hr {
 }
 #sportWid {
     z-index: 8;
+}
+
+@keyframes test {
+    from {width: 300px; height: 200px}
+    to {width: 1px; height: 1px}
 }
