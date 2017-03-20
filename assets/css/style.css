@@ -3,10 +3,39 @@ body {
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
     background-size: cover; /* version standardisée */
 }
+@media (min-width: 768px) {
+    html {
+        overflow: hidden;
+    }
+    #icons li img {
+        width: 50px;
+        margin-left: 10px;
+        text-decoration: none;
+        -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+        transition: all 1s;
+        -webkit-box-reflect: below 0 linear-gradient(transparent 50%, rgba(0,0,0,.3));
+    }
 
-html {
-    overflow: hidden;
+    #icons li img:hover {
+        width: 90px;
+    }
 }
+
+@media (max-width: 768px) {
+    #icons li img {
+        width: 30px;
+        margin-left: 0px;
+        text-decoration: none;
+        -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
+        transition: all 1s;
+        -webkit-box-reflect: below 0 linear-gradient(transparent 50%, rgba(0,0,0,.3));
+    }
+
+    #icons li img:hover {
+        width: 40px;
+    }
+}
+
 
 /*** NAVBAR GENERAL ***/
 .navbar {
@@ -135,20 +164,6 @@ html {
     margin: 0 0.2em 0 0.2em;
     display: inline;
 }
-
-#icons li img {
-    width: 50px;
-    margin-left: 10px;
-    text-decoration: none;
-    -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
-    transition: all 1s;
-    -webkit-box-reflect: below 0 linear-gradient(transparent 50%, rgba(0,0,0,.3));
-}
-
-#icons li img:hover {
-    width: 90px;
-}
-
 
 /*** WIDGET ***/
 .panel {
