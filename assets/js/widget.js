@@ -1,7 +1,11 @@
 /**
  * Created by Guillaume on 15/03/2017.
  */
-
+var nbWidget = 0;
+const columnOne = "#columnOne";
+const columnTwo = "#columnTwo";
+const columnThree = "#columnThree";
+var columnActive = columnOne;
 var existWidgetClock = false;
 var existWidgetMeteo = false;
 var existWidgetPhotos = false;
@@ -20,6 +24,12 @@ var extendWidgetSport = true;
 
 /*** COMMON WIDGET ***/
 function widgetHeader(id) {
+    nbWidget += 1;
+    if(nbWidget>1)
+        columnActive = columnTwo;
+    if(nbWidget > 3)
+        columnActive = columnThree;
+
     var tmp = '<div class="panel-heading"> ' +
         '<div class="pull-left">' +
         '<a href="#" onclick="closeWidget(\''+ id+ '\')">' +
@@ -39,8 +49,8 @@ function widgetHeader(id) {
 function openClockWidget() {
     if(existWidgetClock==false) {
         existWidgetClock= true;
-        $("#content").append(
-            '<div id="clockWid" class="panel panel-default draggable" style="margin-left: 100px;">' +
+        $(columnActive).append(
+            '<div id="clockWid" class="panel draggable center-block panel-default">' +
             widgetHeader("clockWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/clock.png">' +
@@ -62,7 +72,9 @@ function openClockWidget() {
         $('#collapseClock').collapse('show');
         displayClock();
         $( function() {
-            $( ".draggable" ).draggable();
+            $( ".draggable" ).draggable({
+                containment : 'main'
+            });
         } );
     }
 }
@@ -118,8 +130,8 @@ function displayClock() {
 function openMeteoWidget() {
     if(existWidgetMeteo == false) {
         existWidgetMeteo = true;
-        $("#content").append(
-            '<div id="meteoWid" class="panel panel-default draggable" style="margin-left: 500px;">' +
+        $(columnActive).append(
+            '<div id="meteoWid" class="panel draggable center-block panel-default">' +
             widgetHeader("meteoWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/meteo.png">' +
@@ -138,7 +150,9 @@ function openMeteoWidget() {
             '</div>');
         $('#collapseMeteo').collapse('show');
         $( function() {
-            $( ".draggable" ).draggable();
+            $( ".draggable" ).draggable({
+                containment : 'main'
+            });
         } );
     }
 }
@@ -167,8 +181,8 @@ function loadMeteo() {
 function openPhotoWidget() {
     if(existWidgetPhotos == false) {
         existWidgetPhotos = true;
-        $("#content").append(
-            '<div id="photoWid" class="panel panel-default draggable" style="margin-left: 500px; width: 400px;">' +
+        $(columnActive).append(
+            '<div id="photoWid" class="panel draggable center-block panel-default">' +
             widgetHeader("photoWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/photo.png">' +
@@ -187,7 +201,9 @@ function openPhotoWidget() {
             '</div>');
         $('#collapsePhoto').collapse('show');
         $( function() {
-            $( ".draggable" ).draggable();
+            $( ".draggable" ).draggable({
+                containment : 'main'
+            });
         } );
     }
 }
@@ -213,8 +229,8 @@ function loadPhoto() {
 function openTwitterWidget() {
     if (existWidgetTwitter == false) {
         existWidgetTwitter = true;
-        $("#content").append(
-            '<div id="twitterWid" class="panel panel-default draggable" style="margin-left: 500px; width: 400px;">' +
+        $(columnActive).append(
+            '<div id="twitterWid" class="panel draggable center-block panel-default">' +
             widgetHeader("twitterWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/twitter.png">' +
@@ -229,7 +245,9 @@ function openTwitterWidget() {
             '</div>');
         $('#collapseTwitter').collapse('show');
         $( function() {
-            $( ".draggable" ).draggable();
+            $( ".draggable" ).draggable({
+                containment : 'main'
+            });
         } );
     }
 }
@@ -238,8 +256,8 @@ function openTwitterWidget() {
 function openYoutubeWidget() {
     if(existWidgetYoutube == false) {
         existWidgetYoutube = true;
-        $("#content").append(
-            '<div id="youtubeWid" class="panel panel-default draggable" style="margin-left: 500px; width: 400px;">' +
+        $(columnActive).append(
+            '<div id="youtubeWid" class="panel draggable center-block panel-default">' +
             widgetHeader("youtubeWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/youtube.png">' +
@@ -258,7 +276,9 @@ function openYoutubeWidget() {
             '</div>');
         $('#collapseYoutube').collapse('show');
         $( function() {
-            $( ".draggable" ).draggable();
+            $( ".draggable" ).draggable({
+                containment : 'main'
+            });
         } );
     }
 }
@@ -274,8 +294,8 @@ function loadYoutube() {
 function openMapWidget() {
     if(existWidgetMaps == false) {
         existWidgetMaps = true;
-        $("#content").append(
-            '<div id="mapWid" class="panel panel-default draggable" style="margin-left: 500px; width: 400px;">' +
+        $(columnActive).append(
+            '<div id="mapWid" class="panel draggable center-block panel-default">' +
             widgetHeader("mapWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/map.png">' +
@@ -295,7 +315,9 @@ function openMapWidget() {
         $('#collapseMaps').collapse('show');
         loadMap();
         $( function() {
-            $( ".draggable" ).draggable();
+            $( ".draggable" ).draggable({
+                containment : 'main'
+            });
         } );
     }
 }
@@ -346,8 +368,8 @@ function loadMap() {
 function openSportWidget() {
     if(existWidgetSport==false) {
         existWidgetSport=true;
-        $("#content").append(
-            '<div id="sportWid" class="panel panel-default draggable" style="width:450px; margin-left: 500px;">' +
+        $(columnActive).append(
+            '<div id="sportWid" class="panel draggable center-block panel-default">' +
             widgetHeader("sportWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/sport.png">' +
@@ -361,7 +383,9 @@ function openSportWidget() {
         $('#collapseSport').collapse('show');
         loadSportResult();
         $( function() {
-            $( ".draggable" ).draggable();
+            $( ".draggable" ).draggable({
+                containment : 'main'
+            });
         } );
     }
 }
@@ -430,6 +454,8 @@ function loadSportResult() {
 
 /*** SUPPRESSION ***/
 function DeleteWidget() {
+    nbWidget = 0;
+    columnActive = columnOne;
     existWidgetClock = false;
     existWidgetMeteo = false;
     existWidgetPhotos = false;
@@ -437,13 +463,16 @@ function DeleteWidget() {
     existWidgetYoutube = false;
     existWidgetMaps = false;
     existWidgetSport = false;
-
-    //var content = document.getElementById("content");
-    $("#content").html("");
+    $(columnOne).html("");
+    $(columnTwo).html("");
+    $(columnThree).html("");
 
 }
 
 function closeWidget(id) {
+    nbWidget -= 1;
+    if(nbWidget<=2)
+        columnActive = columnOne;
     switch (id) {
         case "clockWid":
             existWidgetClock = false;

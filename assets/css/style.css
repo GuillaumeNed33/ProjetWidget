@@ -120,6 +120,7 @@ html {
 
 /*** DOCKER APP ***/
 #docker {
+    z-index: 20;
     position:fixed;
     bottom: 0;
 }
@@ -136,7 +137,7 @@ html {
 }
 
 #icons li img {
-    width: 60px;
+    width: 50px;
     margin-left: 10px;
     text-decoration: none;
     -webkit-transition: all 1s; /* For Safari 3.1 to 6.0 */
@@ -151,7 +152,7 @@ html {
 
 /*** WIDGET ***/
 .panel {
-    width: 300px;
+    width: 400px;
 }
 
 .panel-heading {
@@ -312,4 +313,36 @@ hr {
     border-top: 1px solid black;
     margin: 1em 0;
     padding: 0;
+}
+
+
+.column {
+    padding:0 auto 0 auto;
+}
+
+.row, .container-fluid, #columnOne, #columnTwo, #columnThree {
+    max-height: 100%;
+    height: 100%;
+}
+
+#clockWid {
+    z-index: 2;
+}
+#meteoWid {
+    z-index: 3;
+}
+#photoWid {
+    z-index: 4;
+}
+#twitterWid {
+    z-index: 5;
+}
+#youtubeWid {
+    z-index: 6;
+}
+#mapWid {
+    z-index: 7;
+}
+#sportWid {
+    z-index: 8;
 }
