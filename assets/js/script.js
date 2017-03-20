@@ -64,4 +64,24 @@ function removeApropos() {
     $('#aPropos').css('visibility', 'hidden');
 
 }
-/*** DRAG AND DROP ***/
+
+function validFormMeteo(e) {
+    if(e.keyCode === 13){
+        loadMeteo();
+    }
+}
+function validFormPhoto(e) {
+    if(e.keyCode === 13){
+        loadPhoto();
+    }
+}
+function validFormYoutube(e) {
+    if(e.keyCode === 13){
+        loadYoutube();
+    }
+}
+function validFormMaps(e) {
+    if(e.keyCode === 13){
+        loadMap();
+    }
+}

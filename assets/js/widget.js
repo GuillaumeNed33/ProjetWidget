@@ -61,7 +61,9 @@ function openClockWidget() {
             '</div>');
         $('#collapseClock').collapse('show');
         displayClock();
-        //displayCalendar();
+        $( function() {
+            $( ".draggable" ).draggable();
+        } );
     }
 }
 
@@ -112,33 +114,32 @@ function displayClock() {
     })(jQuery);
 }
 
-/*function displayCalendar() {
-
-}*/
-
 /*** METEO ***/
 function openMeteoWidget() {
     if(existWidgetMeteo == false) {
         existWidgetMeteo = true;
         $("#content").append(
-            '<div id="meteoWid" class="panel panel-default" style="margin-left: 500px;">' +
+            '<div id="meteoWid" class="panel panel-default draggable" style="margin-left: 500px;">' +
             widgetHeader("meteoWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/meteo.png">' +
             'Meteo</div></div>' +
             '<div id="collapseMeteo" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
-            '<form id="formMeteo" class="input-group" style="text-align:center;">' +
-            '<input type="text" class="form-control" id="city" placeholder="Entrer une Ville">' +
+            '<div id="formMeteo" class="input-group" style="text-align:center;">' +
+            '<input type="text" class="form-control" id="city" placeholder="Entrer une Ville" onkeypress="validFormMeteo(event)">' +
             '<div class="input-group-addon">' +
-            '<button class="glyphicon glyphicon-search" type="submit" onclick="loadMeteo()" style="background-color: transparent; border: 0;"></button>' +
+            '<button class="glyphicon glyphicon-search" onclick="loadMeteo()" style="background-color: transparent; border: 0;"></button>' +
             '</div>' +
-            '</form>' +
+            '</div>' +
             '<div id="contentMeteo"></div>' +
             '</div>' +
             '</div>' +
             '</div>');
         $('#collapseMeteo').collapse('show');
+        $( function() {
+            $( ".draggable" ).draggable();
+        } );
     }
 }
 
@@ -155,7 +156,7 @@ function loadMeteo() {
         parseInt(temperature);
         temperature =parseInt(temperature-273.15);
         temperature = temperature.toString();
-        $("#contentMeteo").append('<h2 id="temp">' + temperature + '°</h2>' +
+        $("#contentMeteo").append('<h2 id="temp">' + temperature + '°C</h2>' +
             '<h3>' + desc + '</h3>' +
             '<img src="http://openweathermap.org/img/w/' + icone + '.png" />');
 
@@ -167,24 +168,27 @@ function openPhotoWidget() {
     if(existWidgetPhotos == false) {
         existWidgetPhotos = true;
         $("#content").append(
-            '<div id="photoWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
+            '<div id="photoWid" class="panel panel-default draggable" style="margin-left: 500px; width: 400px;">' +
             widgetHeader("photoWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/photo.png">' +
             'Photos</div></div>' +
             '<div id="collapsePhoto" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
-            '<form id="formPhotos" class="input-group" style="text-align:center;">' +
-            '<input type="text" class="form-control" id="searchPhoto" placeholder="Recherche de Photos">' +
+            '<div id="formPhotos" class="input-group" style="text-align:center;">' +
+            '<input type="text" class="form-control" id="searchPhoto" placeholder="Recherche de Photos" onkeypress="validFormPhoto(event)">' +
             '<div class="input-group-addon">' +
-            '<button class="glyphicon glyphicon-search" type="submit" onclick="loadPhoto()" style="background-color: transparent; border: 0;"></button>' +
+            '<button class="glyphicon glyphicon-search" onclick="loadPhoto()" style="background-color: transparent; border: 0;"></button>' +
             '</div>' +
-            '</form>' +
+            '</div>' +
             '<div id="contentPhoto" style="margin-top: 20px;"></div>' +
             '</div>' +
             '</div>' +
             '</div>');
         $('#collapsePhoto').collapse('show');
+        $( function() {
+            $( ".draggable" ).draggable();
+        } );
     }
 }
 
@@ -210,7 +214,7 @@ function openTwitterWidget() {
     if (existWidgetTwitter == false) {
         existWidgetTwitter = true;
         $("#content").append(
-            '<div id="twitterWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
+            '<div id="twitterWid" class="panel panel-default draggable" style="margin-left: 500px; width: 400px;">' +
             widgetHeader("twitterWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/twitter.png">' +
@@ -224,6 +228,9 @@ function openTwitterWidget() {
             '</div>' +
             '</div>');
         $('#collapseTwitter').collapse('show');
+        $( function() {
+            $( ".draggable" ).draggable();
+        } );
     }
 }
 
@@ -232,24 +239,27 @@ function openYoutubeWidget() {
     if(existWidgetYoutube == false) {
         existWidgetYoutube = true;
         $("#content").append(
-            '<div id="youtubeWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
+            '<div id="youtubeWid" class="panel panel-default draggable" style="margin-left: 500px; width: 400px;">' +
             widgetHeader("youtubeWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/youtube.png">' +
             'Youtube</div></div>' +
             '<div id="collapseYoutube" class="panel-collapse collapse">'+
             '<div class="panel-body">' +
-            '<form id="formYoutube" class="input-group" style="text-align:center;">' +
-            '<input type="text" class="form-control" id="searchYoutube" placeholder="Entrer des mots clefs">' +
+            '<div id="formYoutube" class="input-group" style="text-align:center;">' +
+            '<input type="text" class="form-control" id="searchYoutube" placeholder="Entrer des mots clefs" onkeypress="validFormYoutube(event)">' +
             '<div class="input-group-addon">' +
-            '<button class="glyphicon glyphicon-search" type="submit" onclick="loadYoutube()" style="background-color: transparent; border: 0;"></button>' +
+            '<button class="glyphicon glyphicon-search" onclick="loadYoutube()" style="background-color: transparent; border: 0;"></button>' +
             '</div>' +
-            '</form>' +
+            '</div>' +
             '<div id="contentYoutube"></div>' +
             '</div>' +
             '</div>' +
             '</div>');
         $('#collapseYoutube').collapse('show');
+        $( function() {
+            $( ".draggable" ).draggable();
+        } );
     }
 }
 
@@ -265,25 +275,28 @@ function openMapWidget() {
     if(existWidgetMaps == false) {
         existWidgetMaps = true;
         $("#content").append(
-            '<div id="mapWid" class="panel panel-default" style="margin-left: 500px; width: 400px;">' +
+            '<div id="mapWid" class="panel panel-default draggable" style="margin-left: 500px; width: 400px;">' +
             widgetHeader("mapWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/map.png">' +
             'Google Maps</div></div>' +
             '<div id="collapseMaps" class="panel-collapse collapse">'+
             '<center class="panel-body">' +
-            '<form id="formMap" class="input-group" style="text-align:center;">' +
-            '<input type="text" class="form-control" id="cityMap" placeholder="Choisir la ville de départ vers l\'IUT">' +
+            '<div id="formMap" class="input-group" style="text-align:center;">' +
+            '<input type="text" class="form-control" id="cityMap" placeholder="Choisir la ville de départ vers l\'IUT" onkeypress="validFormMaps(event)">' +
             '<div class="input-group-addon">' +
-            '<button class="glyphicon glyphicon-search" type="submit" onclick="loadMap()" style="background-color: transparent; border: 0;"></button>' +
+            '<button class="glyphicon glyphicon-search" onclick="loadMap()" style="background-color: transparent; border: 0;"></button>' +
             '</div>' +
-            '</form>' +
+            '</div>' +
             '<div id="contentMap" style="margin-top: 25px;height: 300px; width: 300px;"></div>' +
             '</center></div>' +
             '</div>' +
             '</div>');
         $('#collapseMaps').collapse('show');
         loadMap();
+        $( function() {
+            $( ".draggable" ).draggable();
+        } );
     }
 }
 
@@ -334,7 +347,7 @@ function openSportWidget() {
     if(existWidgetSport==false) {
         existWidgetSport=true;
         $("#content").append(
-            '<div id="sportWid" class="panel panel-default" style="width:450px; margin-left: 500px;">' +
+            '<div id="sportWid" class="panel panel-default draggable" style="width:450px; margin-left: 500px;">' +
             widgetHeader("sportWid") +
             '<div class="title">' +
             '<img class="logo" src="assets/img/sport.png">' +
@@ -347,6 +360,9 @@ function openSportWidget() {
             '</div>');
         $('#collapseSport').collapse('show');
         loadSportResult();
+        $( function() {
+            $( ".draggable" ).draggable();
+        } );
     }
 }
 
