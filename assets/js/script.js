@@ -41,14 +41,6 @@ $(document).ready(function () {
 });
 
 /*** FONCTION NAVBAR ***/
-function closePopUp() {
-    if(existAPropos == true) {
-        jQuery(function ($) {
-
-        });
-    }
-}
-
 function openAPropos() {
     if (existAPropos == false) {
         $('#aPropos').css('visibility', 'visible');
@@ -62,9 +54,10 @@ function openAPropos() {
 function removeApropos() {
     existAPropos = false;
     $('#aPropos').css('visibility', 'hidden');
-
 }
 
+
+/*** VALID FORM WITH ENTER ***/
 function validFormMeteo(e) {
     if(e.keyCode === 13){
         loadMeteo();
